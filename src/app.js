@@ -2,6 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import router from './routes/index';
+import {
+  handleRequest,
+  handleRouter,
+  handleRolePermissions
+} from './middlewares/handle';
 
 const app = express();
 
@@ -57,8 +63,16 @@ app.all('*', function(req, res, next) {
   }
 });
 
+app.use(handleRequest);
+
 app.get('/', (req, res) => {
   res.send('This is My-CV Storage.');
 });
+
+app.use(router);
+
+app.use(handleRolePermissions);
+
+app.use('*', handleRouter);
 
 export default app;
