@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -10,6 +11,8 @@ import {
 } from './middlewares/handle';
 
 const app = express();
+
+app.use(express.static(path.resolve('public')));
 
 dotenv.config({
   path: '/.env.dev'

@@ -13,14 +13,6 @@ const createMiddleware = [
   guard.check(['admin'], ['posts.create', 'posts.update'])
 ];
 
-const upload = multer({ dest: 'uploads/' });
-
-router.post(
-  '/v1/upload/posts',
-  createMiddleware,
-  validateCreate,
-  upload.single('file'),
-  create
-);
+router.post('/v1/upload/posts', createMiddleware, validateCreate, create);
 
 export default router;
