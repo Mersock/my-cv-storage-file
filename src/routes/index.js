@@ -1,8 +1,8 @@
 import express from 'express';
-import uploadFile from './v1/uploadFile';
+import uploadPosts from './v1/uploadPosts';
 
 const router = express.Router();
 
-router.use(uploadFile);
+router.use(uploadPosts);
 
 export default router;
