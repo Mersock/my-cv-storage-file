@@ -37,7 +37,8 @@ export const create = async (req, res) => {
           .status(422)
           .send(responseValidateError(422, 'Unprocessable Entity', errReq));
       }
-      res.status(201).send(responseCollection(req.file));
+      const imagesPath = `${process.env.APP_HOST}/images/posts/${req.file.filename}`;
+      res.status(201).send(responseCollection({ imagesPath }));
     });
   } catch (error) {
     res.status(400).send(responseWithCustomError('Bad Request.', 400));
