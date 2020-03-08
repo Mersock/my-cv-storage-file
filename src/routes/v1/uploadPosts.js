@@ -1,7 +1,7 @@
 import express from 'express';
 import permissions from 'express-jwt-permissions';
 import multer from 'multer';
-import { create } from '../../controller/v1/uploadFile';
+import { create } from '../../controller/v1/uploadPosts';
 import { authLogin } from '../../middlewares/authentications';
 import { validateCreate } from '../../validations/uploadPosts';
 
