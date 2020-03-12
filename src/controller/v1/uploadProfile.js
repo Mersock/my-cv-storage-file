@@ -5,6 +5,13 @@ import {
   responseCollection,
   responseValidateError
 } from '../../utils/response';
+import fs from 'fs'
+
+const profileDir = path.join(__dirname, '../../../public/images/profile');
+
+if(!fs.existsSync(profileDir)){
+  fs.mkdirSync(profileDir,{recursive:true})
+}
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
