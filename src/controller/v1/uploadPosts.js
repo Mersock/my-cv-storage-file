@@ -1,10 +1,18 @@
 import multer from 'multer';
 import path from 'path';
+import fs from 'fs'
 import {
   responseWithCustomError,
   responseCollection,
   responseValidateError
 } from '../../utils/response';
+
+
+const postsDir = path.join(__dirname, '../../../public/images/posts');
+
+if(!fs.existsSync(postsDir)){
+  fs.mkdirSync(postsDir,{recursive:true})
+}
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
